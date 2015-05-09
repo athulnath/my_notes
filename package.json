@@ -1,0 +1,22 @@
+{
+  "name": "my_notes",
+  "version": "1.0.0",
+  "description": "micro notes saving api with oauth2 authentication ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/athulnath/my_notes.git"
+  },
+  "author": "athulnath <athulnath.t@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/athulnath/my_notes/issues"
+  },
+  "homepage": "https://github.com/athulnath/my_notes",
+  "dependencies": {
+    "express": "^4.12.3"
+  }
+}
