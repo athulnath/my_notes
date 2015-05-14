@@ -15,11 +15,13 @@ myNotesApp.controller("signupCtrl", function($scope, User, $location) {
 			if(response.success) {
 				$location.path("/login");
 			} else {
-				if(response.error.code === 11000)
+				if(response.error.code === 11000) {
 					$scope.error = "Username not available";
-				else
+				}
+				else {
 					$scope.error = response.error;
-				$scope.dataLoading = false;
+					$scope.dataLoading = false;	
+				}
 			}
 			
 		});
