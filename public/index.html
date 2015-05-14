@@ -1,25 +1,60 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<link rel="stylesheet" href="./lib/bootstrap/dist/css/bootstrap.min.css">
-		
-		<script src="./lib/angularjs/angular.min.js"></script>
-		<script src="./lib/angular-route/angular-route.min.js"></script>
-		
-		<script src="./js/app.js"></script>
-		<script src="./js/services/Math.js"></script>
-		<script src="./js/controllers/applicationController.js"></script>
+<head>
+<link rel="stylesheet" href="./lib/bootstrap/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="./css/style.css">
 
-		
-	</head>
-	
-	<body ng-app="myNotesApp">
-		<div ng-controller="helloController">
-			{{data}}
+<script src="./lib/angularjs/angular.min.js"></script>
+<script src="./lib/angular-route/angular-route.min.js"></script>
+
+<script src="./app/app.js"></script>
+<script src="./app/services/User.js"></script>
+<script src="./app/controllers/signupController.js"></script>
+
+
+</head>
+
+<body ng-app="myNotesApp">
+	<nav class="navbar navbar-default navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed"
+					data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+					aria-controls="navbar">
+					<span class="sr-only">Toggle navigation</span> <span
+						class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#">My Notes</a>
+			</div>
+			<div id="navbar" class="navbar-collapse collapse">
+				<ul class="nav navbar-nav">
+					<li class="active"><a href="#">Home</a></li>
+					<li><a href="#about">About</a></li>
+					<li><a href="#contact">Contact</a></li>
+				</ul>
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="#/signup">Sign Up</a></li>
+					<li><a href="#/login">Login</a></li>
+				</ul>
+			</div>
+			<!--/.nav-collapse -->
 		</div>
+	</nav>
+
+	<div class="container my-notes">
+	
 		<div ng-view></div>
-		
-		<script src="./lib/jquery/dist/jquery.min.js"></script>
-		<script src="./lib/bootstrap/dist/js/bootstrap.min.js"></script>
-	</body>
+	
+	   <footer class="footer">
+		<hr>
+        <p>© Company 2014</p>
+      </footer>      
+	</div>
+	
+	
+
+	<script src="./lib/jquery/dist/jquery.min.js"></script>
+	<script src="./lib/bootstrap/dist/js/bootstrap.min.js"></script>
+</body>
 </html>
