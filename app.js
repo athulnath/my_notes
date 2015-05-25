@@ -4,6 +4,7 @@ var express = require("express")
   , DBConnector = require("./src/db/DBconnector.js");
 
 var userRouter = require("./routes/userRouter.js");
+var dataRouter = require("./routes/dataRouter.js");
 
 function App() {
 	
@@ -18,7 +19,7 @@ function App() {
 		DBConnector.initDB();
 		
 		
-		app.use("/", userRouter);
+		app.use("/", [userRouter, dataRouter]);
 		
 		app.listen(config.app.port, config.app.host, function() {
 			console.log("application init success", config.app.host, config.app.port);

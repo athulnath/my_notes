@@ -4,20 +4,8 @@
 
 var router = require("express").Router();
 var UserManager = require("../src/dataManager/UserManager.js");
-
-router.get("/user/id/:username", function(req, res) {
-	
-	var username = req.params.username;
-	
-	var userObj = new UserManager();
-	userObj.get(username, function(err, userdata) {
-		if(err) {
-			return res.json({message: "error", error: err});
-		}
-		
-		res.json(userdata);
-	});
-});
+var jwt = require("jsonwebtoken");
+var config = require("../config/config.js");
 
 router.post("/user/register", function(req, res) {
 	
@@ -38,6 +26,30 @@ router.post("/user/register", function(req, res) {
 		}
 		
 		res.json({message : "user data saved!", success: true });
+	});
+});
+
+router.post("/user/login", function(req, res) {	
+	var username = req.body.username;
+	var password = req.body.password;
+	
+	var userObj = new UserManager();
+	userObj.get(username, function(err, user) {
+		if(err) {
+			return res.json({message: "error occured", error: err});
+		}
+		if(!user) {
+			return res.json({message: "user not found"});
+		}
+		
+		if(user.checkPassword(password)) {
+			var token = jwt.sign(user, config.app.key, { expiresInMinutes: 1440});
+			return res.json({message: "success", token: token});
+			
+		} else {
+			return res.json({message: "failed"});
+		}
+
 	});
 });
 

@@ -7,6 +7,7 @@ module.exports = {
 		"app" : {
 			"host": "localhost",
 			"port" : 8080,
+			"key": "4A1E8F8DE84441EFC8DDEAC9BCA7C"
 		},
 		
 		"database": {
