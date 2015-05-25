@@ -13,7 +13,7 @@ myNotesApp.config(["$routeProvider", function($routeProvider) {
 		})
 		.when("/login", {
 			templateUrl: "views/userLogin/login.html",
-			controller: "signupCtrl"
+			controller: "loginCtrl"
 		})
 		.otherwise("/");
 	
