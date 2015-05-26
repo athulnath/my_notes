@@ -14,7 +14,6 @@ myNotesApp.controller("loginCtrl", function($scope, User, $location, Authenticat
 				AuthenticationService.isLogged = true;
 				$window.sessionStorage.token = data.token;
 				$location.path("/admin");
-				console.log("ok logged in success");
 			}).error(function(status, data){
 				console.log(status);
 				console.log(data);
@@ -30,4 +29,8 @@ myNotesApp.controller("loginCtrl", function($scope, User, $location, Authenticat
 		}
 		$location.path("/login");
 	}
-})
+});
+
+myNotesApp.controller("adminCtrl", function($scope) {
+	
+});

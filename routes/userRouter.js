@@ -36,18 +36,18 @@ router.post("/user/login", function(req, res) {
 	var userObj = new UserManager();
 	userObj.get(username, function(err, user) {
 		if(err) {
-			return res.json({message: "error occured", error: err});
+			return res.status(401).json({success: false, message: "error occured", error: err});
 		}
 		if(!user) {
-			return res.json({message: "user not found"});
+			return res.status(401).json({success: false, message: "user not found"});
 		}
 		
 		if(user.checkPassword(password)) {
 			var token = jwt.sign(user, config.app.key, { expiresInMinutes: 1440});
-			return res.json({message: "success", token: token});
+			return res.json({success: true, message: "success", token: token});
 			
 		} else {
-			return res.json({message: "failed"});
+			return res.status(401).json({success: false, message: "failed"});
 		}
 
 	});
