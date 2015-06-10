@@ -47,7 +47,7 @@ router.post("/user/login", function(req, res) {
 			return res.json({success: true, message: "success", token: token});
 			
 		} else {
-			return res.status(401).json({success: false, message: "failed"});
+			return res.status(401).json({success: false, message: "password or username incorrect"});
 		}
 
 	});

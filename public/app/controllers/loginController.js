@@ -7,7 +7,7 @@ myNotesApp.controller("loginCtrl", function($scope, User, $location, Authenticat
 	
 	
 	$scope.formdata = {};
-	
+	$scope.isError = false;
 	$scope.login = function() {
 		if($scope.formdata.username !== undefined && $scope.formdata.password !== undefined) {
 			User.login($scope.formdata.username, $scope.formdata.password).success(function(data) {
@@ -15,9 +15,8 @@ myNotesApp.controller("loginCtrl", function($scope, User, $location, Authenticat
 				$window.sessionStorage.token = data.token;
 				$location.path("/admin");
 			}).error(function(status, data){
-				console.log(status);
-				console.log(data);
-				console.log("failed");
+				$scope.isError = true;
+				$scope.error = status.message;
 			}); 
 		}
 	}
