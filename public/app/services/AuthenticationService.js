@@ -1,6 +1,6 @@
 
 myNotesApp.factory("AuthenticationService", function() {
 	return {
-		isLogged: false
+		isLogged: false		
 	};
 });

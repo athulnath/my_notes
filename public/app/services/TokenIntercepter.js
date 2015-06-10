@@ -7,7 +7,7 @@ myNotesApp.factory("TokenInterceptor", function($q, $window, AuthenticationServi
 		request: function(config) {
 			config.headers = config.headers || {};
 			if($window.sessionStorage.token) {
-				config.headers.Authorization = $window.sessionStorage.token + "sdafas";
+				config.headers.Authorization = $window.sessionStorage.token;
 			}
 			return config;
 		},

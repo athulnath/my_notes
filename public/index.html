@@ -11,6 +11,7 @@
 <script src="./app/services/AuthenticationService.js"></script>
 <script src="./app/services/TokenIntercepter.js"></script>
 <script src="./app/services/User.js"></script>
+<script src="./app/controllers/headerController.js"></script>
 <script src="./app/controllers/signupController.js"></script>
 <script src="./app/controllers/loginController.js"></script>
 
@@ -19,7 +20,7 @@
 
 <body ng-app="myNotesApp">
 	<nav class="navbar navbar-default navbar-fixed-top">
-		<div class="container">
+		<div class="container" ng-controller="HeaderCtrl">
 			<div class="navbar-header">
 				<button type="button" class="navbar-toggle collapsed"
 					data-toggle="collapse" data-target="#navbar" aria-expanded="false"
@@ -37,7 +38,8 @@
 					<li><a href="#contact">Contact</a></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="#/login">Login</a></li>
+					<li><a href="#/login" ng-hide="loggedIn">Login</a></li>
+					<li><a ng-click="logout()" ng-show="loggedIn">Logout</a></li>
 				</ul>
 			</div>
 			<!--/.nav-collapse -->

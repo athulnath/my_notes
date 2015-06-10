@@ -21,16 +21,10 @@ myNotesApp.controller("loginCtrl", function($scope, User, $location, Authenticat
 			}); 
 		}
 	}
-	
-	$scope.logout = function () {
-		if(AuthenticationService.isLogged) {
-			AuthenticationService.isLogged = false;
-			delete $window.sessionStorage.token;
-		}
-		$location.path("/login");
-	}
 });
 
-myNotesApp.controller("adminCtrl", function($scope) {
-	
+myNotesApp.controller("adminCtrl", function($scope, AuthenticationService) {
+	$scope.testFunc = function() {
+		AuthenticationService.isLogged = !AuthenticationService.isLogged;
+	}
 });

@@ -22,10 +22,14 @@ myNotesApp.config(["$routeProvider", function($routeProvider) {
 			controller: "loginCtrl",
 			access: { requiredLogin: false }
 		})
+		.when("/logout", {
+			controller: "loginCtrl",
+			access: { requiredLogin: true }
+		})
 		.when("/admin", {
 			templateUrl: "views/admin/index.html",
 			controller: "adminCtrl",
-			access: { requiredLogin: true }
+			access: { requiredLogin: true}
 		})
 		.otherwise("/");
 	
