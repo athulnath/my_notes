@@ -5,6 +5,7 @@ var express = require("express")
 
 var userRouter = require("./routes/userRouter.js");
 var dataRouter = require("./routes/dataRouter.js");
+var appIDGen = require("./routes/appIDGene.js");
 
 function App() {
 	
@@ -19,7 +20,7 @@ function App() {
 		DBConnector.initDB();
 		
 		
-		app.use("/", [userRouter, dataRouter]);
+		app.use("/", [userRouter, dataRouter, appIDGen]);
 		
 		app.listen(config.app.port, config.app.host, function() {
 			console.log("application init success", config.app.host, config.app.port);

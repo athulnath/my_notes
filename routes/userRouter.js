@@ -44,7 +44,7 @@ router.post("/user/login", function(req, res) {
 		
 		if(user.checkPassword(password)) {
 			var token = jwt.sign(user, config.app.key, { expiresInMinutes: 1440});
-			return res.json({success: true, message: "success", token: token});
+			return res.json({success: true, message: "success", token: token, id: user._id});
 			
 		} else {
 			return res.status(401).json({success: false, message: "password or username incorrect"});

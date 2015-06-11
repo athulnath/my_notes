@@ -13,17 +13,12 @@ myNotesApp.controller("loginCtrl", function($scope, User, $location, Authenticat
 			User.login($scope.formdata.username, $scope.formdata.password).success(function(data) {
 				AuthenticationService.isLogged = true;
 				$window.sessionStorage.token = data.token;
+				$window.sessionStorage.userId = data.id;
 				$location.path("/admin");
 			}).error(function(status, data){
 				$scope.isError = true;
 				$scope.error = status.message;
 			}); 
 		}
-	}
-});
-
-myNotesApp.controller("adminCtrl", function($scope, AuthenticationService) {
-	$scope.testFunc = function() {
-		AuthenticationService.isLogged = !AuthenticationService.isLogged;
 	}
 });
