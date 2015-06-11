@@ -26,7 +26,26 @@ myNotesApp.controller("adminCtrl", function($scope, $http, $window) {
 			console.log(data);
 			$scope.formdata.dataLoading = false;
 		});
-		
-		
+	}
+	
+	$scope.getApps = function() {
+		$scope.formdata.dataLoading = true;
+		$http.post("/api/apps", {
+			id: $window.sessionStorage.userId,
+			token: $window.sessionStorage.token
+		}).success(function(res) {
+			if(res.success === true) {
+				console.log(res);
+				$scope.formdata.success = true;
+				$scope.formdata.error = false;
+				$scope.response = res.message;
+				$scope.data = res.data;
+			} else if(res.message) {
+				$scope.formdata.error = true;
+				$scope.formdata.success = false;
+				$scope.response = res.message;
+			}
+		}).error(function(status, data) {
+		});
 	}
 });

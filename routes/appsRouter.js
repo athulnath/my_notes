@@ -2,6 +2,7 @@ var router = require("express").Router();
 var auth = require("../src/middlewares/auth.js");
 var App = require("../src/models/App.js");
 var IDGenerator = require("../src/util/IDGenerator.js");
+var AppManager = require("../src/dataManager/AppManager.js");
 var jwt = require("jsonwebtoken");
 var mongoose = require("mongoose");
 
@@ -33,5 +34,18 @@ router.post("/api/generateapp", function(req, res) {
 	});
 	
 });
+
+
+router.post("/api/apps", function(req, res) {
+	var userid = req.body.id;
+	var appMangerObj = new AppManager();
+	appMangerObj.getMyApps(userid, function(err, data) {
+		if(err) {
+			return res.json({success: false, message: "some error occured"});
+		}
+		res.json({success: true, data: data});
+	});
+});
+
 
 module.exports = router;
