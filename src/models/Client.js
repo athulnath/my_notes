@@ -8,4 +8,4 @@ var AppSchema = mongoose.Schema({
 	clientKey: {type: String, require: true, unique: true},
 });
 
-module.exports = mongoose.model('Apps', AppSchema);
+module.exports = mongoose.model('Client', AppSchema);

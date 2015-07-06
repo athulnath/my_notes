@@ -22,7 +22,7 @@ function App() {
 		
 		app.use("/", [userRouter, dataRouter, appsRouter]);
 		
-		app.listen(config.app.port, config.app.host, function() {
+		app.listen(config.app.port, "localhost", function() {
 			console.log("application init success", config.app.host, config.app.port);
 		});
 	}

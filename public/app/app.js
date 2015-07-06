@@ -31,7 +31,12 @@ myNotesApp.config(["$routeProvider", function($routeProvider) {
 			controller: "adminCtrl",
 			access: { requiredLogin: true}
 		})
-		.otherwise("/");
+		.when("/myapps", {
+			templateUrl: "views/admin/myapps.html",
+			controller: "appsCtrl",
+			access: { requiredLogin: true}
+		})
+		.otherwise("/login");
 	
 }]);
 

@@ -1,0 +1,22 @@
+<div class="row-fluid"  ng-repeat="x in data">
+<div class="col-lg-6 well pull-left">
+
+	<div class="row">
+		<div class="col-lg-5">
+    				<h3>{{x.app}}</h3>	
+  		</div>
+	</div>
+	<div class="row">
+  		<div class="col-lg-3">
+  			ID
+    		<input type="text" class="form-control" value="{{x.clientID}}" placeholder=".col-lg-3" disabled>
+  		</div>
+  		<div class="col-lg-7">
+  			Secret key
+    		<input type="text" class="form-control" value="{{x.clientKey}}" placeholder=".col-lg-4" disabled>
+  		</div>
+	</div>
+</div>
+</div>
+
+<div style="clear: both;"></div>
