@@ -1,6 +1,12 @@
+(function(){
+	angular
+		.module("app")
+		.factory("AuthenticationService", authenticationService);
 
-myNotesApp.factory("AuthenticationService", function() {
-	return {
-		isLogged: false		
-	};
-});
+		////
+		function authenticationService() {
+			return {
+				isLogged: false		
+			};
+		}
+})();

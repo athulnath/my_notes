@@ -19,7 +19,6 @@ function App() {
 		
 		DBConnector.initDB();
 		
-		
 		app.use("/", [userRouter, dataRouter, appsRouter]);
 		
 		app.listen(config.app.port, "localhost", function() {

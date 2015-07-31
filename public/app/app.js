@@ -1,12 +1,33 @@
+// (function() {
+var myNotesApp = angular.module("app", ['ngRoute']);
 
-var myNotesApp = angular.module("myNotesApp", ['ngRoute']);
 
-myNotesApp.config(function ($httpProvider) {
+angular
+	.module("app")
+	.config(routerConfig)
+	.config(tokenInterceptor)
+	.run(runApp)
+
+/////
+
+runApp.$inject = ["$rootScope", "$location", "AuthenticationService"];
+function runApp($rootScope, $location, AuthenticationService) {
+    $rootScope.$on("$routeChangeStart", function(event, nextRoute, currentRoute) {
+        if (nextRoute.access.requiredLogin && !AuthenticationService.isLogged) {
+            $location.path("/login");
+        }
+    });
+}
+
+tokenInterceptor.$inject = ["$httpProvider"];
+function tokenInterceptor($httpProvider) {
     $httpProvider.interceptors.push('TokenInterceptor');
-});
+}
 
-myNotesApp.config(["$routeProvider", function($routeProvider) {
-	$routeProvider
+
+routerConfig.$inject = ["$routeProvider"];
+function routerConfig($routeProvider) {
+		$routeProvider
 		.when("/addStudent", {
 			templateUrl: "addStudent.html",
 			controller: "addStudentCtrl",
@@ -37,13 +58,5 @@ myNotesApp.config(["$routeProvider", function($routeProvider) {
 			access: { requiredLogin: true}
 		})
 		.otherwise("/login");
-	
-}]);
-
-myNotesApp.run(function($rootScope, $location, AuthenticationService) {
-    $rootScope.$on("$routeChangeStart", function(event, nextRoute, currentRoute) {
-        if (nextRoute.access.requiredLogin && !AuthenticationService.isLogged) {
-            $location.path("/login");
-        }
-    });
-});
+}
+// })();

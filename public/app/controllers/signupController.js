@@ -1,11 +1,17 @@
 /**
  * New node file
  */
-
-
-myNotesApp.controller("signupCtrl", function($scope, User, $location) {
+(function() {
 	
-	
+angular
+	.module("app")
+	.controller("signupCtrl", signupController);
+signupController.$inject = ["$scope", "User", "$location"];
+
+////
+
+function signupController($scope, User, $location) {
+		
 	$scope.formdata = {};
 	
 	$scope.register = function() {
@@ -26,4 +32,5 @@ myNotesApp.controller("signupCtrl", function($scope, User, $location) {
 			
 		});
 	}
-})
+}
+})();

@@ -1,11 +1,16 @@
 /**
  * New node file
  */
+(function(){
 
+angular
+	.module("app")
+	.controller("loginCtrl", loginController);
+loginController.$inject = ["$scope", "User", "$location", "AuthenticationService", "$window"];
 
-myNotesApp.controller("loginCtrl", function($scope, User, $location, AuthenticationService, $window) {
-	
-	
+/////
+
+function loginController($scope, User, $location, AuthenticationService, $window) {
 	$scope.formdata = {};
 	$scope.isError = false;
 	$scope.formdata.dataLoading = false;
@@ -25,4 +30,6 @@ myNotesApp.controller("loginCtrl", function($scope, User, $location, Authenticat
 			}); 
 		}
 	}
-});
+}	
+
+})();

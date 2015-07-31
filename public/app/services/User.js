@@ -1,28 +1,35 @@
 /**
  * New node file
  */
+(function() {
+	angular
+		.module("app")
+		.factory("User", userFactory);
 
-myNotesApp.factory('User', ['$http', function($http) {
+	userFactory.$inject = ["$http"];
+
+	function userFactory($http) {
 	
-	var service = {
-			createUser: createUser,
-			login: login,
-			logout: logout
-	};
+		var service = {
+				createUser: createUser,
+				login: login,
+				logout: logout
+		};
+
+		return service;
 	
-	return service;
+		function createUser(data) {
+			return $http.post("/user/register", data).then(function(response) {
+				return response.data;
+			});
+		}
 	
-	function createUser(data) {
-		return $http.post("/user/register", data).then(function(response) {
-			return response.data;
-		});
-	}
+		function login(username, password) {
+			return $http.post("/user/login", {username: username, password: password});
+		}
 	
-	function login(username, password) {
-		return $http.post("/user/login", {username: username, password: password});
-	}
-	
-	function logout() {
+		function logout() {
 		
+		}
 	}
-}]);
+})();
