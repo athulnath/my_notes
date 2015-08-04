@@ -18,8 +18,8 @@ function ClientManager() {
 		return new Client({
 			userId: userId,
 			app: appName,
-			clientID: IdObj.getClientId(),
-			clientKey: IdObj.getSecretKey()
+			clientId: IdObj.getClientId(),
+			clientSecret: IdObj.getSecretKey()
 		});
 	};
 }

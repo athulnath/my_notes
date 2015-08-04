@@ -15,7 +15,6 @@ router.post("/api/generateapp", function(req, res) {
 	var appDoc = clientManagerObj.getMyDocObj(req.body.id, req.body.appname);
 
 	appDoc.save(function(err, appDoc) {
-		
 		if(err) {
 			if(err.code == 11000) {
 				return res.json({sucess: false, message: "duplicate application name", error: err}); 
