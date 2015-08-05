@@ -6,9 +6,9 @@
 		.module("app")
 		.factory("User", userFactory);
 
-	userFactory.$inject = ["$http"];
+	userFactory.$inject = ["$http", "Config"];
 
-	function userFactory($http) {
+	function userFactory($http, Config) {
 	
 		var service = {
 				createUser: createUser,
@@ -19,13 +19,13 @@
 		return service;
 	
 		function createUser(data) {
-			return $http.post("/user/register", data).then(function(response) {
+			return $http.post(Config.baseUrl + "/user/register", data).then(function(response) {
 				return response.data;
 			});
 		}
 	
 		function login(username, password) {
-			return $http.post("/user/login", {username: username, password: password});
+			return $http.post(Config.baseUrl + "/user/login", {username: username, password: password});
 		}
 	
 		function logout() {

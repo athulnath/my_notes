@@ -4,9 +4,9 @@ var express = require("express")
   , DBConnector = require("./src/db/DBconnector.js")
   , oauthserver = require("oauth2-server");
 
-var userRouter = require("./routes/userRouter.js");
-var dataRouter = require("./routes/dataRouter.js");
-var appsRouter = require("./routes/appsRouter.js");
+var userRouter = require("./src/routes/userRouter.js");
+var dataRouter = require("./src/routes/dataRouter.js");
+var appsRouter = require("./src/routes/appsRouter.js");
 var Oauth2Model = require("./src/models/Oauth2Model.js");
 
 
@@ -38,7 +38,7 @@ function App() {
 		
 		app.use("/", [userRouter, dataRouter, appsRouter]);
 		
-		app.listen(config.app.port, "localhost", function() {
+		app.listen(config.app.port, "", function() {
 			console.log("application init success", config.app.host, config.app.port);
 		});
 	}

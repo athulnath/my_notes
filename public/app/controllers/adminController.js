@@ -3,10 +3,10 @@
 		.module("app")
 		.controller("adminCtrl", adminController);
 
-		adminController.$inject = ["$scope", "$http", "$window"];
+		adminController.$inject = ["$scope", "$http", "$window", "Config"];
 
 		////
-		function adminController($scope, $http, $window) {
+		function adminController($scope, $http, $window, Config) {
 			$scope.formdata = {};
 			$scope.formdata.dataLoading = false;
 			$scope.formdata.success = false;
@@ -14,7 +14,7 @@
 
 			$scope.generateID = function() {
 				$scope.formdata.dataLoading = true;
-				$http.post("/api/generateapp", {
+				$http.post(Config.baseUrl + "/api/generateapp", {
 				appname: $scope.formdata.application,
 				id: $window.sessionStorage.userId,
 				token: $window.sessionStorage.token

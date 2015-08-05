@@ -3,9 +3,9 @@
  */
 
 var router = require("express").Router();
-var UserManager = require("../src/dataManager/UserManager.js");
+var UserManager = require("../dataManager/UserManager.js");
 var jwt = require("jsonwebtoken");
-var config = require("../config/config.js");
+var config = require("../../config/config.js");
 
 router.post("/user/register", function(req, res) {
 	

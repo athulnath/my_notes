@@ -1,8 +1,8 @@
 var router = require("express").Router();
-var auth = require("../src/middlewares/auth.js");
-var Client = require("../src/models/Client.js");
-var IDGenerator = require("../src/util/IDGenerator.js");
-var ClientManager = require("../src/dataManager/ClientManager.js");
+var auth = require("../middlewares/auth.js");
+var Client = require("../models/Client.js");
+var IDGenerator = require("../util/IDGenerator.js");
+var ClientManager = require("../dataManager/ClientManager.js");
 var jwt = require("jsonwebtoken");
 var mongoose = require("mongoose");
 

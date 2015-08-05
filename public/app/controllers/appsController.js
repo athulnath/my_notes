@@ -3,16 +3,16 @@
 		.module("app")
 		.controller("appsCtrl", appsController);
 
-	appsController.$inject = ["$scope","$http", "$window"];
+	appsController.$inject = ["$scope","$http", "$window", "Config"];
 
 	////
 
-	function appsController($scope, $http, $window) {
+	function appsController($scope, $http, $window, Config) {
 		$scope.data = [];
 
 
 		$scope.getApps = function() {
-			$http.post("/api/apps", {
+			$http.post(Config.baseUrl + "/api/apps", {
 				id: $window.sessionStorage.userId,
 				token: $window.sessionStorage.token
 			}).success(function(res) {
